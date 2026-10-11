@@ -5,6 +5,7 @@ import App from "./App";
 import "./index.css";
 
 document.documentElement.classList.add("js");
+document.documentElement.setAttribute("data-version", "1.0.1");
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
