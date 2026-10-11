@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useActiveSection } from "../hooks/useActiveSection";
 
@@ -12,19 +13,33 @@ const STAGES = [
 ] as const;
 const IDS = ["top", "services", "solutions", "ai", "work", "process", "about", "founders", "contact"];
 
+/** True while the contact form is on screen, so the bar never covers it. */
+function useContactVisible(enabled: boolean) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = enabled ? document.getElementById("contact") : null;
+    if (!el) return;
+    const io = new IntersectionObserver(([en]) => setVisible(en.isIntersecting), { rootMargin: "0px 0px -12% 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [enabled]);
+  return visible;
+}
+
 export function JourneyBar() {
   const { pathname } = useLocation();
   const active = useActiveSection(IDS);
+  const onContact = useContactVisible(pathname === "/");
   if (pathname !== "/") return null;
   const cur = active === "about" || active === "founders" || active === "contact" ? "process" : active || "top";
   const idx = Math.max(0, STAGES.findIndex(([id]) => id === cur));
   return (
     <div
-      className="pointer-events-none fixed inset-x-0 bottom-3 z-40 hidden justify-center lg:flex"
+      className={`pointer-events-none fixed inset-x-0 bottom-2 z-40 hidden justify-center transition-opacity duration-300 lg:flex ${onContact ? "opacity-0" : "opacity-100"}`}
       role="presentation"
     >
       <ol
-        className="pointer-events-auto flex items-center gap-1 rounded-full border border-line bg-bg/70 px-3 py-2 backdrop-blur-md"
+        className="flex items-center gap-1 rounded-full border border-line bg-bg/60 px-2.5 py-1.5 backdrop-blur-sm"
         aria-label="Journey: idea to growth"
       >
         {STAGES.map(([id, label], i) => (
