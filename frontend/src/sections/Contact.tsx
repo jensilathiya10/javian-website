@@ -161,7 +161,7 @@ export function Contact() {
                 </button>
                 <p className="mt-4 text-xs text-muted">
                   We use your details only to respond to this inquiry. See the{" "}
-                  <Link className="underline" to="/privacy">privacy policy</Link>.
+                  <Link className="underline" to="/privacy-policy">privacy policy</Link>.
                 </p>
               </div>
             </form>

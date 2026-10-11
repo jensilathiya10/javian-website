@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Ambient } from "./components/Ambient";
 import { Footer } from "./components/Footer";
 import { JourneyBar } from "./components/JourneyBar";
@@ -7,7 +7,8 @@ import { Navbar } from "./components/Navbar";
 import Home from "./pages/Home";
 
 const ProjectPage = lazy(() => import("./pages/ProjectPage"));
-const Privacy = lazy(() => import("./pages/Privacy"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const Security = lazy(() => import("./pages/Security"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function ScrollManager() {
@@ -40,7 +41,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/work/:slug" element={<ProjectPage />} />
-            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+            <Route path="/security" element={<Security />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

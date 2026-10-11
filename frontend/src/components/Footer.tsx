@@ -46,8 +46,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="inline-flex min-h-9 items-center text-muted hover:text-accent">
-                  Privacy policy
+                <Link to="/privacy-policy" className="inline-flex min-h-9 items-center text-muted hover:text-accent">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/security" className="inline-flex min-h-9 items-center text-muted hover:text-accent">
+                  Security
                 </Link>
               </li>
             </ul>
