@@ -43,6 +43,6 @@ add a `/* /index.html 200` redirect.
 ## Still to configure before launch
 
 - Set `VITE_FORMSPREE_ENDPOINT` and `VITE_CONTACT_EMAIL`.
-
-- Review `/privacy` with legal counsel (marked as a draft on the page).
+- Point DNS for `javiantech.com` and `www` at Vercel, then add canonical and absolute `og:image` URLs.
+- Fill the `[PLACEHOLDER: …]` details in `frontend/src/lib/legal.ts` and have `/privacy-policy` and `/security` reviewed by counsel.
 - Work items are labeled concepts; replace them in `frontend/src/lib/projects.ts` when real projects are available.
