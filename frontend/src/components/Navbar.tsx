@@ -47,7 +47,7 @@ export function Navbar() {
       }`}
     >
       <div className="container-x flex h-16 items-center justify-between">
-        <Link to="/" onClick={close} className="py-2">
+        <Link to="/" onClick={close} className="flex min-h-11 items-center">
           <Wordmark />
         </Link>
 
