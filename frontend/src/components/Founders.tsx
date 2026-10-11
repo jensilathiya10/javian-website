@@ -17,6 +17,14 @@ interface Founder {
 // Roles and bios are editable placeholders, not confirmed facts. Photos live in public/images/founders/.
 const FOUNDERS: Founder[] = [
   {
+    name: "Abhi",
+    role: "Co-Founder",
+    bio: "Focuses on collaboration, innovation, and turning ideas into practical digital solutions.",
+    photo: "/images/founders/abhi.jpg",
+    tint: "#4d4378",
+    socials: [],
+  },
+  {
     name: "Jensi",
     role: "Co-Founder",
     bio: "Builds modern digital experiences and scalable software solutions with a focus on thoughtful design and reliable technology.",
@@ -30,14 +38,6 @@ const FOUNDERS: Founder[] = [
     bio: "Helps shape Javian's vision and strategy, bringing ideas to life through meaningful technology.",
     photo: "/images/founders/avi.jpg",
     tint: "#386b5f",
-    socials: [],
-  },
-  {
-    name: "Abhi",
-    role: "Co-Founder",
-    bio: "Focuses on collaboration, innovation, and turning ideas into practical digital solutions.",
-    photo: "/images/founders/abhi.jpg",
-    tint: "#4d4378",
     socials: [],
   },
 ];
