@@ -20,7 +20,7 @@ const FOUNDERS: Founder[] = [
     name: "Abhi",
     role: "Co-Founder",
     bio: "Focuses on collaboration, innovation, and turning ideas into practical digital solutions.",
-    photo: "/images/founders/abhi.jpg",
+    photo: "/images/founders/abhi-2.jpg",
     tint: "#4d4378",
     socials: [],
   },
