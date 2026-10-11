@@ -22,13 +22,12 @@ export default function Privacy() {
         <section>
           <h2>How we use it</h2>
           <p>
-            We use this information only to read and respond to your inquiry. A one-way hash of your email and message
-            is stored to detect accidental duplicate submissions.
+            We use this information only to read and respond to your inquiry.
           </p>
         </section>
         <section>
           <h2>Storage and access</h2>
-          <p>Inquiries are stored in a private database and are not published or exposed through any public endpoint.</p>
+          <p>Inquiries are delivered to our email inbox through Formspree, a hosted form service that processes the submission on our behalf. They are not published anywhere. We do not run our own database of inquiries.</p>
         </section>
         <section>
           <h2>Cookies and tracking</h2>

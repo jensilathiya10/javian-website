@@ -1,12 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { ProjectVisual } from "../components/ProjectVisual";
 import { useDocumentMeta } from "../hooks/useDocumentMeta";
-import { useProjects } from "../hooks/useProjects";
+import { FALLBACK_PROJECTS as projects } from "../lib/projects";
 import NotFound from "./NotFound";
 
 export default function ProjectPage() {
   const { slug } = useParams();
-  const { projects } = useProjects();
   const project = projects.find((p) => p.slug === slug);
   useDocumentMeta(project ? `${project.title} — Javian Technologies` : "Project not found — Javian Technologies", project?.summary);
   if (!project) return <NotFound />;

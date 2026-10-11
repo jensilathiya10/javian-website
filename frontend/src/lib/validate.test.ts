@@ -6,8 +6,11 @@ describe("validateContact", () => {
   it("accepts a valid payload", () => {
     expect(validateContact(ok)).toEqual({});
   });
-  it("flags every invalid field", () => {
+  it("treats service as optional", () => {
+    expect(validateContact({ ...ok, service: "" })).toEqual({});
+  });
+  it("flags every invalid required field", () => {
     const e = validateContact({ name: "", email: "bad", service: "", message: "short" });
-    expect(Object.keys(e).sort()).toEqual(["email", "message", "name", "service"]);
+    expect(Object.keys(e).sort()).toEqual(["email", "message", "name"]);
   });
 });

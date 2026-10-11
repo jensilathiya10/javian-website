@@ -1,7 +1,6 @@
 import type { Project } from "../types";
 
-// Static fallback so the page never depends on the API being up.
-// Mirrors the backend seed; all entries are concepts, not client work.
+// Static project content; all entries are concepts, not client work.
 export const FALLBACK_PROJECTS: Project[] = [
   {
     slug: "operations-hub",

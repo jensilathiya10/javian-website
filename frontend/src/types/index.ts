@@ -15,7 +15,8 @@ export interface ContactPayload {
   service: string;
   budget?: string;
   message: string;
-  website?: string;
+  /** Spam honeypot; must stay empty. */
+  _gotcha?: string;
 }
 
 export type FieldErrors = Partial<Record<keyof ContactPayload, string>>;

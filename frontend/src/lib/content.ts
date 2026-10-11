@@ -146,4 +146,6 @@ export const TECH = [
   "React", "TypeScript", "Python", "FastAPI", "Node.js", "PostgreSQL", "MongoDB", "MySQL", "AWS", "Docker", "CI/CD", "LLM integrations", "RAG", "Semantic search",
 ];
 
+export const BUDGETS = ["Under $5k", "$5k–15k", "$15k–50k", "$50k+", "Not sure"];
+
 export const CONTACT_EMAIL: string | undefined = import.meta.env.VITE_CONTACT_EMAIL || undefined;

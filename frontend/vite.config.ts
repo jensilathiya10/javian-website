@@ -9,7 +9,6 @@ export default defineConfig({
   css: { postcss: {} },
   server: {
     port: 5173,
-    proxy: { "/api": "http://localhost:8000" },
   },
   build: {
     target: "es2022",

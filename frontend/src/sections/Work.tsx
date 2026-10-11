@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ProjectVisual } from "../components/ProjectVisual";
 import { Reveal } from "../components/Reveal";
 import { SectionHead } from "../components/SectionHead";
-import { useProjects } from "../hooks/useProjects";
+import { FALLBACK_PROJECTS as projects } from "../lib/projects";
 import { onScrollFrame, prefersReducedMotion } from "../lib/scroll";
 import type { Project } from "../types";
 
@@ -77,7 +77,6 @@ function Showcase({ p, i }: { p: Project; i: number }) {
 }
 
 export function Work() {
-  const { projects } = useProjects();
   return (
     <section id="work" className="overflow-x-clip py-6 md:py-9">
       <div className="container-x">

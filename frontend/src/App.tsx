@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 const ProjectPage = lazy(() => import("./pages/ProjectPage"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const Admin = lazy(() => import("./pages/Admin"));
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -42,7 +41,6 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/work/:slug" element={<ProjectPage />} />
             <Route path="/privacy" element={<Privacy />} />
-            <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
