@@ -43,6 +43,6 @@ add a `/* /index.html 200` redirect.
 ## Still to configure before launch
 
 - Set `VITE_FORMSPREE_ENDPOINT` and `VITE_CONTACT_EMAIL`.
-- Replace `example.com` in `frontend/public/sitemap.xml` and `robots.txt` with the real domain.
+
 - Review `/privacy` with legal counsel (marked as a draft on the page).
 - Work items are labeled concepts; replace them in `frontend/src/lib/projects.ts` when real projects are available.
