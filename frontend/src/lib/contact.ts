@@ -28,6 +28,7 @@ export async function submitContact(payload: ContactPayload): Promise<void> {
         name: payload.name,
         email: payload.email,
         company: payload.company || "",
+        phone: payload.phone || "",
         service: payload.service || "",
         budget: payload.budget || "",
         message: payload.message,

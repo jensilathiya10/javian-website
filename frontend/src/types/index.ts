@@ -12,6 +12,7 @@ export interface ContactPayload {
   name: string;
   email: string;
   company?: string;
+  phone?: string;
   service: string;
   budget?: string;
   message: string;

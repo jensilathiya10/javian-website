@@ -16,7 +16,7 @@ export default function Privacy() {
           <h2>What we collect</h2>
           <p>
             When you submit the project inquiry form we collect the details you enter: your name, email address,
-            optional company, service of interest, optional budget range and your project description.
+            optional company, optional phone number, service of interest, optional budget range and your project description.
           </p>
         </section>
         <section>

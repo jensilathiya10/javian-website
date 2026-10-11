@@ -8,7 +8,7 @@ import { BUDGETS, CONTACT_EMAIL, SERVICES } from "../lib/content";
 import { validateContact } from "../lib/validate";
 import type { ContactPayload, FieldErrors } from "../types";
 
-const EMPTY: ContactPayload = { name: "", email: "", company: "", service: "", budget: "", message: "", _gotcha: "" };
+const EMPTY: ContactPayload = { name: "", email: "", company: "", phone: "", service: "", budget: "", message: "", _gotcha: "" };
 
 type Status = { kind: "idle" } | { kind: "loading" } | { kind: "success" } | { kind: "error"; message: string };
 
@@ -40,6 +40,7 @@ export function Contact() {
         name: v.name.trim(),
         email: v.email.trim(),
         company: v.company?.trim() || undefined,
+        phone: v.phone?.trim() || undefined,
         service: v.service,
         budget: v.budget,
         message: v.message.trim(),
@@ -104,6 +105,11 @@ export function Contact() {
               <div>
                 <label htmlFor="f-company" className="eyebrow mb-2 block">Company</label>
                 <input id="f-company" className="field" autoComplete="organization" value={v.company} onChange={set("company")} maxLength={160} />
+              </div>
+              <div>
+                <label htmlFor="f-phone" className="eyebrow mb-2 block">Phone</label>
+                <input id="f-phone" type="tel" className="field" autoComplete="tel" value={v.phone} onChange={set("phone")} maxLength={30} {...aria("phone")} />
+                {err("phone")}
               </div>
               <div>
                 <label htmlFor="f-service" className="eyebrow mb-2 block">Service type</label>
