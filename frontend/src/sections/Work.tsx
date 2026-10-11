@@ -33,7 +33,7 @@ function Showcase({ p, i }: { p: Project; i: number }) {
 
   return (
     <Reveal>
-      <article className={`grid items-center gap-8 lg:gap-16 ${L.grid}`}>
+      <article className={`grid items-center gap-6 lg:gap-12 ${L.grid}`}>
         <Link to={`/work/${p.slug}`} aria-label={`${p.title}: view project`} className={`group relative block ${L.visual}`}>
           <div ref={ref} className="relative">
             <div
@@ -52,22 +52,22 @@ function Showcase({ p, i }: { p: Project; i: number }) {
         </Link>
 
         <div className={L.text}>
-          <p className="eyebrow mb-4 flex items-center gap-3">
+          <p className="eyebrow mb-3 flex items-center gap-3">
             <span className="rounded-full border border-cyan/50 px-2.5 py-0.5 text-cyan">{p.kind}</span>
             <span>0{i + 1}</span>
           </p>
           <h3 className="display text-3xl md:text-5xl">{p.title}</h3>
-          <p className="mt-5 text-muted leading-relaxed">{p.summary}</p>
+          <p className="mt-4 text-muted leading-relaxed">{p.summary}</p>
           <p className="mt-4 text-sm leading-relaxed">
             <span className="eyebrow mr-2 !text-lav">Problem</span>
             {p.problem}
           </p>
-          <ul className="mt-6 flex flex-wrap gap-2" aria-label="Technologies and services">
+          <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies and services">
             {p.tags.map((t) => (
               <li key={t} className="rounded-full border border-line-strong px-3 py-1 font-mono text-xs text-muted">{t}</li>
             ))}
           </ul>
-          <Link to={`/work/${p.slug}`} className="link-arrow mt-6">
+          <Link to={`/work/${p.slug}`} className="link-arrow mt-4">
             View Project <span className="arrow" aria-hidden>→</span>
           </Link>
         </div>
@@ -84,7 +84,7 @@ export function Work() {
           Product concepts and internal experiments showing how we approach real business problems. Each is labeled as a
           concept, not a client engagement.
         </SectionHead>
-        <div className="space-y-16 md:space-y-24">
+        <div className="space-y-10 md:space-y-14">
           {projects.map((p, i) => (
             <Showcase key={p.slug} p={p} i={i} />
           ))}
