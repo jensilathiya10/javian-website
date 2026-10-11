@@ -1,4 +1,5 @@
 import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useActiveSection } from "../hooks/useActiveSection";
@@ -64,7 +65,7 @@ export function Navbar() {
                 >
                   {n.label}
                   <span
-                    className={`absolute inset-x-0 -bottom-0.5 h-px bg-cyan transition-transform origin-left ${
+                    className={`absolute inset-x-0 -bottom-0.5 h-px bg-cyan transition-transform duration-300 origin-left ${
                       onHome && active === n.id ? "scale-x-100" : "scale-x-0"
                     }`}
                   />
@@ -91,29 +92,38 @@ export function Navbar() {
         </div>
       </div>
 
-      {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 top-16 bottom-0 overflow-y-auto bg-bg/95 lg:hidden">
-          <nav aria-label="Mobile" className="container-x py-8">
-            <ul className="flex flex-col">
-              {NAV.map((n) => (
-                <li key={n.id} className="border-b border-line">
-                  <Link
-                    to={{ pathname: "/", hash: n.id }}
-                    onClick={close}
-                    className="display flex min-h-16 items-center justify-between text-3xl"
-                  >
-                    {n.label}
-                    <span className="text-accent" aria-hidden>→</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Link to={{ pathname: "/", hash: "contact" }} onClick={close} className="btn btn-primary mt-8 w-full justify-center">
-              Start a Project <span className="arrow" aria-hidden>→</span>
-            </Link>
-          </nav>
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.22, ease: [0.2, 0.7, 0.2, 1] }}
+            className="fixed inset-x-0 top-16 bottom-0 overflow-y-auto bg-bg/95 backdrop-blur-md lg:hidden"
+          >
+            <nav aria-label="Mobile" className="container-x py-8">
+              <ul className="flex flex-col">
+                {NAV.map((n) => (
+                  <li key={n.id} className="border-b border-line">
+                    <Link
+                      to={{ pathname: "/", hash: n.id }}
+                      onClick={close}
+                      className="display flex min-h-16 items-center justify-between text-3xl"
+                    >
+                      {n.label}
+                      <span className="text-accent" aria-hidden>→</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link to={{ pathname: "/", hash: "contact" }} onClick={close} className="btn btn-primary mt-8 w-full justify-center">
+                Start a Project <span className="arrow" aria-hidden>→</span>
+              </Link>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

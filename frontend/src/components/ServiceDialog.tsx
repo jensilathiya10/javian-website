@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import { useCallback, useEffect, useRef } from "react";
 import type { Service } from "../lib/content";
 
@@ -63,8 +64,13 @@ export function ServiceDialog({ service, onClose }: { service: Service | null; o
                 {service.title}
               </h3>
             </div>
-            <button type="button" className="btn btn-ghost !min-h-11 !px-4 text-sm" onClick={requestClose}>
-              Close
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line-strong text-muted transition-colors hover:border-cyan hover:text-ink"
+              onClick={requestClose}
+              aria-label="Close dialog"
+            >
+              <X size={18} />
             </button>
           </div>
           <p className="mt-5 text-muted">{service.blurb}</p>

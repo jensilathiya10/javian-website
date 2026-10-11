@@ -61,7 +61,7 @@ export function Hero() {
             <Link to={{ pathname: "/", hash: "contact" }} className="btn btn-primary justify-center">
               Start a Project <span className="arrow" aria-hidden>→</span>
             </Link>
-            <Link to={{ pathname: "/", hash: "work" }} className="btn btn-ghost justify-center">
+            <Link to={{ pathname: "/", hash: "work" }} className="link-arrow justify-center">
               Explore Our Work <span className="arrow arrow-down" aria-hidden>↓</span>
             </Link>
           </div>

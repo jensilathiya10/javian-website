@@ -22,7 +22,7 @@ export function Footer() {
             <ul className="space-y-1">
               {NAV.map((n) => (
                 <li key={n.id}>
-                  <Link to={{ pathname: "/", hash: n.id }} className="inline-flex min-h-9 items-center text-sm text-ink/90 hover:text-accent">
+                  <Link to={{ pathname: "/", hash: n.id }} className="inline-flex min-h-9 items-center text-sm text-ink/90 transition-colors hover:text-accent">
                     {n.label}
                   </Link>
                 </li>

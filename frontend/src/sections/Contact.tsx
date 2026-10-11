@@ -132,7 +132,12 @@ export function Contact() {
                 </select>
               </div>
               <div className="sm:col-span-2">
-                <label htmlFor="f-message" className="eyebrow mb-2 block">Project details *</label>
+                <div className="mb-2 flex items-baseline justify-between">
+                  <label htmlFor="f-message" className="eyebrow">Project details *</label>
+                  <span className={`font-mono text-xs tabular-nums ${v.message.length > 3800 ? "text-danger" : "text-muted"}`}>
+                    {4000 - v.message.length} left
+                  </span>
+                </div>
                 <textarea id="f-message" rows={6} className="field resize-y" value={v.message} onChange={set("message")} maxLength={4000} {...aria("message")} />
                 {err("message")}
               </div>

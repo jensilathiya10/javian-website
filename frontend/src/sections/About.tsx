@@ -27,9 +27,10 @@ export function About() {
           <Reveal>
             <ul className="divide-y divide-line border-y border-line">
               {PRINCIPLES.map(([t, d], i) => (
-                <li key={t} className="group grid grid-cols-[40px_1fr] gap-4 py-5 transition-colors hover:bg-indigo/30 md:grid-cols-[48px_240px_1fr] md:px-3">
+                <li key={t} className="group relative grid grid-cols-[40px_1fr] gap-4 py-5 transition-colors duration-200 hover:bg-indigo/40 md:grid-cols-[48px_240px_1fr] md:px-3">
+                  <span className="absolute left-0 top-0 bottom-0 w-0.5 origin-left scale-y-0 bg-cyan transition-transform duration-300 group-hover:scale-y-100" aria-hidden />
                   <span className="eyebrow !text-cyan pt-1">0{i + 1}</span>
-                  <h3 className="font-bold">{t}</h3>
+                  <h3 className="font-bold transition-colors duration-200 group-hover:text-ink">{t}</h3>
                   <p className="col-start-2 text-sm text-muted md:col-start-auto">{d}</p>
                 </li>
               ))}
