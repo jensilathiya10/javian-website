@@ -148,4 +148,4 @@ export const TECH = [
 
 export const BUDGETS = ["Under $5k", "$5k–15k", "$15k–50k", "$50k+", "Not sure"];
 
-export const CONTACT_EMAIL: string | undefined = import.meta.env.VITE_CONTACT_EMAIL || undefined;
+export const CONTACT_EMAIL = "admin@javiantech.com";
