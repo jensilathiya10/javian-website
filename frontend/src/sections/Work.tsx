@@ -81,8 +81,7 @@ export function Work() {
     <section id="work" className="overflow-x-clip py-6 md:py-9">
       <div className="container-x">
         <SectionHead label="Selected work" title={<>Ideas, engineered <span className="grad-text">into reality.</span></>}>
-          Product concepts and internal experiments showing how we approach real business problems. Each is labeled as a
-          concept, not a client engagement.
+          A selection of client websites and digital products we have designed and built.
         </SectionHead>
         <div className="space-y-10 md:space-y-14">
           {projects.map((p, i) => (

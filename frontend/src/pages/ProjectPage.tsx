@@ -21,7 +21,6 @@ export default function ProjectPage() {
       </Link>
       <p className="eyebrow mt-8 flex items-center gap-3">
         <span className="rounded-full border border-cyan/50 px-2.5 py-0.5 text-cyan">{project.kind}</span>
-        Not a client project
       </p>
       <h1 className="display mt-4 text-[clamp(2.5rem,7vw,5.5rem)]">{project.title}</h1>
       <p className="mt-6 max-w-2xl text-lg text-muted">{project.summary}</p>
@@ -29,7 +28,7 @@ export default function ProjectPage() {
       <Reveal>
         <div className="mt-12 max-w-4xl">
           <ProjectVisual slug={project.slug} title={project.title} />
-          <p className="mt-3 font-mono text-xs text-muted">Concept visualization, not a screenshot of a released product.</p>
+          <p className="mt-3 font-mono text-xs text-muted">Website screenshot.</p>
         </div>
       </Reveal>
 
