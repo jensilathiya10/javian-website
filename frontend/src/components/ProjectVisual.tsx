@@ -23,11 +23,11 @@ export function ProjectVisual({ slug, title }: { slug: string; title: string }) 
         <img
           src={src}
           alt={`${title} website screenshot`}
-          className="aspect-[16/10] w-full object-cover object-top"
+          className="w-full object-contain"
           loading="lazy"
         />
       ) : (
-        <div className="aspect-[16/10] bg-indigo" />
+        <div className="aspect-[16/9] bg-indigo" />
       )}
     </div>
   );
