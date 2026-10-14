@@ -4,7 +4,7 @@ import { GeoStructure } from "../components/GeoStructure";
 import { Reveal } from "../components/Reveal";
 import { SectionHead } from "../components/SectionHead";
 import { ContactError, submitContact } from "../lib/contact";
-import { BUDGETS, CONTACT_EMAIL, SERVICES } from "../lib/content";
+import { BUDGETS, CONTACT_EMAIL, CONTACT_PHONE, SERVICES } from "../lib/content";
 import { validateContact } from "../lib/validate";
 import type { ContactPayload, FieldErrors } from "../types";
 
@@ -76,6 +76,8 @@ export function Contact() {
             <p className="text-sm text-muted">
               Prefer email?{" "}
               <a className="text-ink underline decoration-cyan underline-offset-4" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+              {" · "}
+              <a className="text-ink underline decoration-cyan underline-offset-4" href={`tel:${CONTACT_PHONE.tel}`}>{CONTACT_PHONE.display}</a>
             </p>
           )}
         </div>

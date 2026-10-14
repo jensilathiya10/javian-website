@@ -149,3 +149,5 @@ export const TECH = [
 export const BUDGETS = ["Under $5k", "$5k–15k", "$15k–50k", "$50k+", "Not sure"];
 
 export const CONTACT_EMAIL = "admin@javiantech.com";
+
+export const CONTACT_PHONE = { display: "+91 95749 36650", tel: "+919574936650" };

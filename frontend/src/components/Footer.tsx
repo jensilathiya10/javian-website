@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CONTACT_EMAIL, NAV } from "../lib/content";
+import { CONTACT_EMAIL, CONTACT_PHONE, NAV } from "../lib/content";
 import { Wordmark } from "./Wordmark";
 
 export function Footer() {
@@ -40,6 +40,11 @@ export function Footer() {
                   </a>
                 </li>
               )}
+              <li>
+                <a href={`tel:${CONTACT_PHONE.tel}`} className="inline-flex min-h-9 items-center hover:text-accent">
+                  {CONTACT_PHONE.display}
+                </a>
+              </li>
               <li>
                 <Link to={{ pathname: "/", hash: "contact" }} className="inline-flex min-h-9 items-center hover:text-accent">
                   Send a project inquiry
