@@ -1,6 +1,7 @@
 import { Founders } from "../components/Founders";
 import { Preloader } from "../components/Preloader";
 import { useDocumentMeta } from "../hooks/useDocumentMeta";
+import { useJsonLd } from "../hooks/useJsonLd";
 import { About } from "../sections/About";
 import { AI } from "../sections/AI";
 import { Contact } from "../sections/Contact";
@@ -14,7 +15,18 @@ export default function Home() {
   useDocumentMeta(
     "Javian Technologies — Software, Business Systems & AI",
     "Javian Technologies builds reliable, scalable web and mobile products, custom business software, AI-powered automation and SaaS platforms.",
+    "https://javiantech.com/",
   );
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://javiantech.com/",
+    "name": "Javian Technologies — Software, Business Systems & AI",
+    "description": "Javian Technologies builds reliable, scalable web and mobile products, custom business software, AI-powered automation and SaaS platforms.",
+    "url": "https://javiantech.com/",
+    "isPartOf": { "@id": "https://javiantech.com/#website" },
+    "about": { "@id": "https://javiantech.com/#organization" },
+  });
   return (
     <>
       <Preloader />

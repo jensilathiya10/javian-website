@@ -21,9 +21,12 @@ const SECTIONS = [
 ] as const;
 
 export default function PrivacyPolicy() {
+  // noindex until the [PLACEHOLDER: …] values in src/lib/legal.ts are replaced with real content.
   useDocumentMeta(
     "Privacy Policy — Javian Technologies",
     "How Javian Technologies handles personal information submitted through this website, written for visitors and businesses in India.",
+    "https://javiantech.com/privacy-policy",
+    true,
   );
   const mail = CONTACT_EMAIL ?? LEGAL.privacyEmail;
   return (

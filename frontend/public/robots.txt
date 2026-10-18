@@ -1,4 +1,22 @@
 User-agent: *
 Allow: /
 
+# AI crawlers — explicitly allowed for indexing and training
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
 Sitemap: https://javiantech.com/sitemap.xml
+
+# AI model discovery: https://javiantech.com/llms.txt

@@ -2,13 +2,40 @@ import { Link, useParams } from "react-router-dom";
 import { ProjectVisual } from "../components/ProjectVisual";
 import { Reveal } from "../components/Reveal";
 import { useDocumentMeta } from "../hooks/useDocumentMeta";
+import { useJsonLd } from "../hooks/useJsonLd";
 import { FALLBACK_PROJECTS as projects } from "../lib/projects";
 import NotFound from "./NotFound";
 
 export default function ProjectPage() {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
-  useDocumentMeta(project ? `${project.title} — Javian Technologies` : "Project not found — Javian Technologies", project?.summary);
+  const projectUrl = project ? `https://javiantech.com/work/${project.slug}` : undefined;
+  useDocumentMeta(
+    project ? `${project.title} — Javian Technologies` : "Project not found — Javian Technologies",
+    project?.summary,
+    projectUrl,
+  );
+  useJsonLd(project ? {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://javiantech.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://javiantech.com/#work" },
+          { "@type": "ListItem", "position": 3, "name": project.title, "item": projectUrl },
+        ],
+      },
+      {
+        "@type": "WebPage",
+        "@id": projectUrl,
+        "name": `${project.title} — Javian Technologies`,
+        "description": project.summary,
+        "url": projectUrl,
+        "isPartOf": { "@id": "https://javiantech.com/#website" },
+      },
+    ],
+  } : null);
   if (!project) return <NotFound />;
 
   const idx = projects.indexOf(project);

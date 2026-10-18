@@ -1,6 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [{ "source": "/((?!assets/)(?!.*\\.[a-z0-9]+$).*)", "destination": "/index.html" }],
+  "rewrites": [
+    { "source": "/work/:slug", "destination": "/index.html" },
+    { "source": "/privacy-policy", "destination": "/index.html" },
+    { "source": "/privacy", "destination": "/index.html" },
+    { "source": "/security", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

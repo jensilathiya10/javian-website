@@ -1,0 +1,37 @@
+# Javian Technologies
+
+> Javian Technologies is a software engineering company that builds web and mobile products, custom business software, AI-powered automation and SaaS platforms for businesses worldwide.
+
+Javian Technologies was co-founded by Abhi, Jensi, and Avi. We combine thoughtful design, sound engineering and a clear understanding of the business behind every feature, so the software we build stays useful as it grows.
+
+## Services
+
+- Web Development: Corporate sites, e-commerce storefronts, dashboards and modern web applications
+- Mobile Applications: iOS, Android and cross-platform apps, API integration
+- Custom Business Software: ERP, CRM, HRM, POS modules, internal tools, reporting, migration from spreadsheets
+- AI & Intelligent Automation: Knowledge-base assistants, document processing, workflow automation, LLM integrations in existing applications
+- SaaS Product Engineering: Multi-tenant architecture, billing and subscriptions, customer portals, cloud deployment and monitoring
+- UI/UX & Product Design: Discovery workshops, interface and prototype design, technical architecture, design-to-code delivery
+
+## Technology
+
+React, TypeScript, Python, FastAPI, Node.js, PostgreSQL, MongoDB, MySQL, AWS, Docker, CI/CD, LLM integrations, RAG, Semantic search
+
+## Work
+
+- [Café Linde](https://javiantech.com/work/cafe-linde): Dark-themed website with online table reservations for a specialty coffee house
+- [Studio X](https://javiantech.com/work/studio-x): Bold portfolio website for a photography and cinematic film studio based in Surat, India
+- [Brew & Bloom](https://javiantech.com/work/brew-bloom): Warm editorial website with integrated online ordering for a coffee and plant shop
+- [Three Tyres Grocery](https://javiantech.com/work/three-tyres-grocery): Grocery delivery platform serving the Indian and South Asian community in Berlin
+
+## Pages
+
+- [Home](https://javiantech.com/): Overview of services, solutions, work portfolio, process, founders and contact
+- [Privacy Policy](https://javiantech.com/privacy-policy): How personal information is handled, written under Indian law
+- [Security](https://javiantech.com/security): Security practices for this website and the software we build
+
+## Contact
+
+- Email: admin@javiantech.com
+- Website: https://javiantech.com
+- Location: India

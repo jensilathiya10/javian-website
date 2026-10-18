@@ -18,9 +18,12 @@ const SECTIONS = [
 ] as const;
 
 export default function Security() {
+  // noindex until the [PLACEHOLDER: …] values in src/lib/legal.ts are replaced with real content.
   useDocumentMeta(
     "Security — Javian Technologies",
     "How Javian Technologies approaches security for this website and the software it builds, including what is in place today and what is still planned.",
+    "https://javiantech.com/security",
+    true,
   );
   return (
     <LegalLayout
