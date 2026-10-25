@@ -234,8 +234,28 @@ export function buildRouteJsonLd(path: string): object | null {
     );
   }
 
+  // Homepage gets a FAQPage schema for the visible FAQ section
+  if (path === "/") {
+    const homeFaqs = [
+      { q: "What does Javian Technologies build?", a: "We build custom business software, websites, mobile applications and AI automation systems. Our work covers the full spectrum: from marketing websites and e-commerce storefronts through to ERP modules, internal tools, SaaS platforms and LLM-powered workflow automation." },
+      { q: "Do you work with clients across India?", a: "Yes — we work with clients across India and remotely. We currently focus on Indian businesses but can take on international projects too. Every project starts with a discovery call regardless of where you are." },
+      { q: "How long does a typical project take?", a: "A focused marketing website typically takes 4–8 weeks. A custom business application or ERP module runs 8–20 weeks depending on scope. We define milestones and deliverables upfront so you always know what is happening and when." },
+      { q: "Do you offer fixed-price projects?", a: "Yes. After a short discovery phase we scope the work and provide a fixed-price quote. For ongoing or evolving products we also offer monthly retainers and quarterly sprint arrangements." },
+      { q: "How do we start a project with Javian?", a: "Fill in the contact form on this page or email us at admin@javiantech.com. We'll schedule a short discovery call, understand your requirements and send you a proposal within a few days." },
+    ];
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": homeFaqs.map(({ q, a }) => ({
+        "@type": "Question",
+        "name": q,
+        "acceptedAnswer": { "@type": "Answer", "text": a },
+      })),
+    };
+  }
+
   // Work pages and other routes get a WebPage schema
-  if (path !== "/" && !meta.noindex) {
+  if (!meta.noindex) {
     return buildWebPageJsonLd(meta.canonical, meta.title, meta.description);
   }
 

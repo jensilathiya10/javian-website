@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Reveal } from "../components/Reveal";
 import { SectionHead } from "../components/SectionHead";
 import { AI_CAPABILITIES, AI_FLOW } from "../lib/content";
@@ -76,6 +77,11 @@ export function AI() {
               </li>
             ))}
           </ul>
+          <div className="mt-8">
+            <Link to="/services/ai-automation" className="link-arrow">
+              Learn more about AI automation <span className="arrow" aria-hidden>→</span>
+            </Link>
+          </div>
         </Reveal>
       </div>
     </section>
