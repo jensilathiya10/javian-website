@@ -44,7 +44,7 @@ export function Hero() {
           <p className="eyebrow enter mb-6" style={{ ["--d" as string]: "100ms" }}>
             JAVIAN TECHNOLOGIES
           </p>
-          <h1 className="display text-[clamp(2.4rem,min(6.4vw,9vh),5.4rem)]" aria-label={HEADLINE.join(" ")}>
+          <h1 className="display text-[clamp(2.4rem,min(6.4vw,9vh),5.4rem)]" aria-label="Custom software development and AI automation — we build technology for what comes next">
             {HEADLINE.map((w, i) => (
               <span key={i} className="word mr-[0.22em]" aria-hidden>
                 <span className={i >= GRAD_FROM ? "grad-text" : undefined} style={{ ["--i" as string]: i }}>
@@ -54,8 +54,8 @@ export function Hero() {
             ))}
           </h1>
           <p className="enter mt-8 max-w-xl text-base leading-relaxed text-muted md:text-lg" style={{ ["--d" as string]: "650ms" }}>
-            We design and engineer powerful digital products, web platforms and
-            mobile experiences for businesses around the world.
+            Custom software development, web and mobile products, AI automation
+            and business systems — engineered for growing businesses.
           </p>
           <div className="enter mt-10 flex flex-col gap-3 sm:flex-row" style={{ ["--d" as string]: "800ms" }}>
             <Link to={{ pathname: "/", hash: "contact" }} className="btn btn-primary justify-center">

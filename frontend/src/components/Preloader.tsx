@@ -7,6 +7,7 @@ const SESSION_KEY = "jv_preloaded";
 
 export function Preloader() {
   const [done, setDone] = useState(() => {
+    if (typeof window === "undefined") return true; // SSR: skip preloader
     if (prefersReducedMotion()) return true;
     try { if (sessionStorage.getItem(SESSION_KEY)) return true; } catch { /* private mode */ }
     return false;
