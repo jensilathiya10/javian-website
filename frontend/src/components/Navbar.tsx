@@ -72,6 +72,26 @@ export function Navbar() {
                 </Link>
               </li>
             ))}
+            <li className="relative group">
+              <span className="relative py-2 text-sm text-muted transition-colors hover:text-ink cursor-default">Services</span>
+              <ul className="absolute left-0 top-full mt-1 hidden min-w-[15rem] flex-col rounded-xl border border-line bg-bg/95 py-2 shadow-lg backdrop-blur-md group-hover:flex">
+                <li>
+                  <Link to="/services/web-design-development" className="block px-4 py-2.5 text-sm text-muted transition-colors hover:text-ink hover:bg-white/5">
+                    Web Design &amp; Development
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/custom-software-development" className="block px-4 py-2.5 text-sm text-muted transition-colors hover:text-ink hover:bg-white/5">
+                    Custom Software Development
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/ai-automation" className="block px-4 py-2.5 text-sm text-muted transition-colors hover:text-ink hover:bg-white/5">
+                    AI Automation
+                  </Link>
+                </li>
+              </ul>
+            </li>
           </ul>
         </nav>
 
@@ -116,6 +136,24 @@ export function Navbar() {
                     </Link>
                   </li>
                 ))}
+                <li className="border-b border-line">
+                  <Link to="/services/web-design-development" onClick={close} className="display flex min-h-14 items-center justify-between text-2xl">
+                    Web Design &amp; Dev
+                    <span className="text-accent" aria-hidden>→</span>
+                  </Link>
+                </li>
+                <li className="border-b border-line">
+                  <Link to="/services/custom-software-development" onClick={close} className="display flex min-h-14 items-center justify-between text-2xl">
+                    Custom Software
+                    <span className="text-accent" aria-hidden>→</span>
+                  </Link>
+                </li>
+                <li className="border-b border-line">
+                  <Link to="/services/ai-automation" onClick={close} className="display flex min-h-14 items-center justify-between text-2xl">
+                    AI Automation
+                    <span className="text-accent" aria-hidden>→</span>
+                  </Link>
+                </li>
               </ul>
               <Link to={{ pathname: "/", hash: "contact" }} onClick={close} className="btn btn-primary mt-8 w-full justify-center">
                 Start a Project <span className="arrow" aria-hidden>→</span>

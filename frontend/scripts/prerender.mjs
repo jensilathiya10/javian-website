@@ -1,7 +1,8 @@
 /**
  * Prerender script: builds an SSR bundle then renders each known route to a
- * static index.html in dist/. Vercel serves these static files directly;
- * the /work/:slug rewrite in vercel.json remains as a fallback for future routes.
+ * static index.html in dist/. Per-route head metadata (title, description,
+ * canonical, og:*, twitter:*, JSON-LD) is injected into each file so crawlers
+ * see correct values without waiting for JS hydration.
  */
 import { build } from "vite";
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from "fs";
@@ -25,6 +26,80 @@ const ROUTES = [
   "/work/three-tyres-grocery",
 ];
 
+/** HTML-escape a string for use in attribute values and text content. */
+function esc(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+/**
+ * Inject per-route head metadata into the HTML template.
+ * Replaces title, description, canonical, og:*, twitter:* and appends page JSON-LD.
+ */
+function injectRouteMeta(html, meta, jsonLd) {
+  const { title, description, canonical, noindex } = meta;
+  const robots = noindex ? "noindex, follow" : "index, follow";
+  let out = html;
+
+  // <title>
+  out = out.replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`);
+
+  // <meta name="description" ...> — [^>]* stops at the tag boundary; handles multiline tags too
+  out = out.replace(
+    /<meta[^>]*name="description"[^>]*\/?>/,
+    `<meta name="description" content="${esc(description)}" />`,
+  );
+
+  // <meta name="robots" ...>
+  out = out.replace(
+    /<meta name="robots" content="[^"]*"\s*\/?>/,
+    `<meta name="robots" content="${robots}" />`,
+  );
+
+  // <link rel="canonical" ...>
+  out = out.replace(
+    /<link rel="canonical" href="[^"]*"\s*\/?>/,
+    `<link rel="canonical" href="${canonical}" />`,
+  );
+
+  // og:url
+  out = out.replace(
+    /<meta property="og:url" content="[^"]*"\s*\/?>/,
+    `<meta property="og:url" content="${canonical}" />`,
+  );
+
+  // og:title
+  out = out.replace(
+    /<meta property="og:title" content="[^"]*"\s*\/?>/,
+    `<meta property="og:title" content="${esc(title)}" />`,
+  );
+
+  // og:description — [^>]* stops at the tag boundary; handles multiline tags too
+  out = out.replace(
+    /<meta[^>]*property="og:description"[^>]*\/?>/,
+    `<meta property="og:description" content="${esc(description)}" />`,
+  );
+
+  // twitter:title
+  out = out.replace(
+    /<meta name="twitter:title" content="[^"]*"\s*\/?>/,
+    `<meta name="twitter:title" content="${esc(title)}" />`,
+  );
+
+  // twitter:description
+  out = out.replace(
+    /<meta name="twitter:description" content="[^"]*"\s*\/?>/,
+    `<meta name="twitter:description" content="${esc(description)}" />`,
+  );
+
+  // Inject page-specific JSON-LD before </head>
+  if (jsonLd) {
+    const ldScript = `<script type="application/ld+json">\n${JSON.stringify(jsonLd, null, 2)}\n</script>`;
+    out = out.replace("</head>", `${ldScript}\n</head>`);
+  }
+
+  return out;
+}
+
 console.log("Prerender: building SSR bundle…");
 await build({
   root,
@@ -38,7 +113,7 @@ await build({
   },
 });
 
-const { render } = await import(
+const { render, getRouteMeta, buildRouteJsonLd } = await import(
   pathToFileURL(resolve(root, "dist-ssr/entry-server.js")).href
 );
 
@@ -54,10 +129,18 @@ for (const route of ROUTES) {
 
   try {
     const appHtml = render(route);
-    const html = template.replace(
+    const meta = getRouteMeta(route);
+    const jsonLd = buildRouteJsonLd(route);
+
+    let html = template.replace(
       '<div id="root"></div>',
       `<div id="root">${appHtml}</div>`,
     );
+
+    if (meta) {
+      html = injectRouteMeta(html, meta, jsonLd);
+    }
+
     writeFileSync(resolve(outDir, "index.html"), html, "utf-8");
     console.log(`  ✓ ${route}`);
   } catch (err) {

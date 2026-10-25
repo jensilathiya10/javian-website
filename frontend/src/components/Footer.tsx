@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="relative border-t border-line bg-bg/60">
       <div className="container-x py-14 md:py-16">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Link to="/">
               <Wordmark />
@@ -27,6 +27,27 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Services">
+            <p className="eyebrow mb-4">Services</p>
+            <ul className="space-y-1">
+              <li>
+                <Link to="/services/web-design-development" className="inline-flex min-h-9 items-center text-sm text-ink/90 transition-colors hover:text-accent">
+                  Web Design &amp; Development
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/custom-software-development" className="inline-flex min-h-9 items-center text-sm text-ink/90 transition-colors hover:text-accent">
+                  Custom Software
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/ai-automation" className="inline-flex min-h-9 items-center text-sm text-ink/90 transition-colors hover:text-accent">
+                  AI Automation
+                </Link>
+              </li>
             </ul>
           </nav>
 

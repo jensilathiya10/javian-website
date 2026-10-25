@@ -314,6 +314,7 @@ export function Founders() {
                 <motion.span {...state} custom={T.heading + i * 0.09} variants={maskUp} className="inline-block">
                   {w}
                 </motion.span>
+                {' '}
               </span>
             ))}
           </h2>

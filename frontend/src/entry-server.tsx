@@ -46,3 +46,6 @@ export function render(url: string): string {
     </StaticRouter>,
   );
 }
+
+// Re-exported so prerender.mjs can call them from the compiled SSR bundle.
+export { getRouteMeta, buildRouteJsonLd } from "./lib/siteRoutes";

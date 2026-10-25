@@ -50,6 +50,7 @@ export function Hero() {
                 <span className={i >= GRAD_FROM ? "grad-text" : undefined} style={{ ["--i" as string]: i }}>
                   {w}
                 </span>
+                {' '}
               </span>
             ))}
           </h1>
