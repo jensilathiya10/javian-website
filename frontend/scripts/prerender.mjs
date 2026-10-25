@@ -110,6 +110,7 @@ await build({
     outDir: resolve(root, "dist-ssr"),
     emptyOutDir: true,
     rollupOptions: { output: { format: "esm" } },
+  codeSplitting: false,
   },
 });
 
@@ -128,7 +129,7 @@ for (const route of ROUTES) {
   mkdirSync(outDir, { recursive: true });
 
   try {
-    const appHtml = render(route);
+    const appHtml = await render(route);
     const meta = getRouteMeta(route);
     const jsonLd = buildRouteJsonLd(route);
 

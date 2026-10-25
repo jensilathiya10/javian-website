@@ -1,4 +1,5 @@
-import { renderToString } from "react-dom/server";
+import { Writable } from "node:stream";
+import { renderToPipeableStream } from "react-dom/server";
 import { StaticRouter } from "react-router";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Ambient } from "./components/Ambient";
@@ -6,7 +7,7 @@ import { Footer } from "./components/Footer";
 import { JourneyBar } from "./components/JourneyBar";
 import { Navbar } from "./components/Navbar";
 import Home from "./pages/Home";
-// Eager imports — no lazy/Suspense in SSR so all pages render their actual HTML
+// Eager imports — pages must render full HTML during prerendering
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ProjectPage from "./pages/ProjectPage";
@@ -39,12 +40,29 @@ function SSRApp() {
   );
 }
 
-export function render(url: string): string {
-  return renderToString(
-    <StaticRouter location={url}>
-      <SSRApp />
-    </StaticRouter>,
-  );
+/** Renders a route to a complete HTML string, waiting for all Suspense/lazy chunks. */
+export function render(url: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const chunks: Buffer[] = [];
+    const writable = new Writable({
+      write(chunk, _enc, cb) {
+        chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+        cb();
+      },
+    });
+    writable.on("finish", () => resolve(Buffer.concat(chunks).toString("utf-8")));
+    writable.on("error", reject);
+
+    const { pipe } = renderToPipeableStream(
+      <StaticRouter location={url}>
+        <SSRApp />
+      </StaticRouter>,
+      {
+        onAllReady() { pipe(writable); },
+        onError: reject,
+      },
+    );
+  });
 }
 
 // Re-exported so prerender.mjs can call them from the compiled SSR bundle.
