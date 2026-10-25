@@ -10,6 +10,9 @@ const ProjectPage = lazy(() => import("./pages/ProjectPage"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Security = lazy(() => import("./pages/Security"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const WebDesignPage = lazy(() => import("./pages/services/WebDesignPage"));
+const CustomSoftwarePage = lazy(() => import("./pages/services/CustomSoftwarePage"));
+const AIAutomationPage = lazy(() => import("./pages/services/AIAutomationPage"));
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -41,6 +44,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/work/:slug" element={<ProjectPage />} />
+            <Route path="/services/web-design-development" element={<WebDesignPage />} />
+            <Route path="/services/custom-software-development" element={<CustomSoftwarePage />} />
+            <Route path="/services/ai-automation" element={<AIAutomationPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
             <Route path="/security" element={<Security />} />

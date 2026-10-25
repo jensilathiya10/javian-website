@@ -11,6 +11,9 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ProjectPage from "./pages/ProjectPage";
 import Security from "./pages/Security";
+import AIAutomationPage from "./pages/services/AIAutomationPage";
+import CustomSoftwarePage from "./pages/services/CustomSoftwarePage";
+import WebDesignPage from "./pages/services/WebDesignPage";
 
 function SSRApp() {
   return (
@@ -22,6 +25,9 @@ function SSRApp() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/work/:slug" element={<ProjectPage />} />
+          <Route path="/services/web-design-development" element={<WebDesignPage />} />
+          <Route path="/services/custom-software-development" element={<CustomSoftwarePage />} />
+          <Route path="/services/ai-automation" element={<AIAutomationPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
           <Route path="/security" element={<Security />} />

@@ -22,7 +22,7 @@ const FOUNDERS: Founder[] = [
     bio: "Focuses on collaboration, innovation, and turning ideas into practical digital solutions.",
     photo: "/images/founders/abhi-2.jpg",
     tint: "#4d4378",
-    socials: [],
+    socials: [{ kind: "linkedin", href: "https://www.linkedin.com/in/abhikheni8" }],
   },
   {
     name: "Jensi",
@@ -30,7 +30,7 @@ const FOUNDERS: Founder[] = [
     bio: "Builds modern digital experiences and scalable software solutions with a focus on thoughtful design and reliable technology.",
     photo: "/images/founders/jensi.jpg",
     tint: "#384e6b",
-    socials: [],
+    socials: [{ kind: "linkedin", href: "https://www.linkedin.com/in/jensi-lathiya-371a25231" }],
   },
   {
     name: "Avi",
@@ -38,7 +38,7 @@ const FOUNDERS: Founder[] = [
     bio: "Helps shape Javian's vision and strategy, bringing ideas to life through meaningful technology.",
     photo: "/images/founders/avi.jpg",
     tint: "#386b5f",
-    socials: [],
+    socials: [{ kind: "linkedin", href: "https://www.linkedin.com/in/avi-kheni" }],
   },
 ];
 

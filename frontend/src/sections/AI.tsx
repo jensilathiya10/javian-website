@@ -36,8 +36,8 @@ export function AI() {
     <section id="ai" className="relative overflow-hidden py-6 md:py-9">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline" aria-hidden />
       <div className="container-x">
-        <SectionHead label="AI & automation" title={<>Make intelligence <span className="grad-text">work for you.</span></>}>
-          Practical AI integrations and automation that connect intelligent capabilities with real business workflows.
+        <SectionHead label="AI & automation" title={<>AI automation for <span className="grad-text">real business workflows.</span></>}>
+          Practical AI integrations and automation that reduce repetitive work and connect intelligent capabilities to your existing systems.
         </SectionHead>
 
         <Reveal>

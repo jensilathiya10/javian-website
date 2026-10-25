@@ -19,6 +19,7 @@ export interface Service {
   includes: string[];
   formValue: string;
   span: string;
+  path?: string; // dedicated service page URL, if it exists
 }
 
 export const SERVICES: Service[] = [
@@ -31,6 +32,7 @@ export const SERVICES: Service[] = [
     includes: ["Marketing and corporate sites", "E-commerce storefronts", "Dashboards and portals", "Performance and accessibility work"],
     formValue: "web",
     span: "lg:col-span-7",
+    path: "/services/web-design-development",
   },
   {
     id: "mobile",
@@ -51,6 +53,7 @@ export const SERVICES: Service[] = [
     includes: ["Internal tools and admin systems", "ERP, CRM, HRM and POS modules", "Reporting and dashboards", "Migration from spreadsheets"],
     formValue: "business-software",
     span: "lg:col-span-5",
+    path: "/services/custom-software-development",
   },
   {
     id: "ai-automation",
@@ -61,6 +64,7 @@ export const SERVICES: Service[] = [
     includes: ["Knowledge-base assistants", "Document processing", "Workflow automation", "LLM integrations in existing apps"],
     formValue: "ai-automation",
     span: "lg:col-span-7",
+    path: "/services/ai-automation",
   },
   {
     id: "saas",

@@ -2,6 +2,9 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     { "source": "/work/:slug", "destination": "/index.html" },
+    { "source": "/services/web-design-development", "destination": "/index.html" },
+    { "source": "/services/custom-software-development", "destination": "/index.html" },
+    { "source": "/services/ai-automation", "destination": "/index.html" },
     { "source": "/privacy-policy", "destination": "/index.html" },
     { "source": "/privacy", "destination": "/index.html" },
     { "source": "/security", "destination": "/index.html" }
