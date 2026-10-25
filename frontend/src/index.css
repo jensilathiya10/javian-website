@@ -2,6 +2,16 @@
 @import "@fontsource-variable/manrope";
 @import "@fontsource-variable/jetbrains-mono";
 
+/* Size-adjusted fallback reduces layout shift while Manrope loads */
+@font-face {
+  font-family: "Manrope Variable Fallback";
+  src: local("Arial");
+  size-adjust: 96%;
+  ascent-override: 104%;
+  descent-override: 28%;
+  line-gap-override: 0%;
+}
+
 @theme {
   --color-bg: #080b1a;
   --color-indigo: #17143d;
@@ -14,7 +24,7 @@
   --color-line: rgb(201 190 255 / 0.14);
   --color-line-strong: rgb(201 190 255 / 0.28);
   --color-danger: #ff8fa3;
-  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope Variable", "Manrope Variable Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
 }

@@ -34,7 +34,7 @@ function Showcase({ p, i }: { p: Project; i: number }) {
   return (
     <Reveal>
       <article className={`grid items-center gap-6 lg:gap-12 ${L.grid}`}>
-        <Link to={`/work/${p.slug}`} aria-label={`${p.title}: view project`} className={`group relative block ${L.visual}`}>
+        <Link to={`/work/${p.slug}`} className={`group relative block ${L.visual}`}><span className="sr-only">{p.title}</span>
           <div ref={ref} className="relative">
             <div
               className="absolute inset-4 rounded-3xl border border-violet/40 bg-indigo/40 will-change-transform"
@@ -68,7 +68,7 @@ function Showcase({ p, i }: { p: Project; i: number }) {
             ))}
           </ul>
           <Link to={`/work/${p.slug}`} className="link-arrow mt-4">
-            View Project <span className="arrow" aria-hidden>→</span>
+            View Project <span className="arrow" aria-hidden>→</span><span className="sr-only"> — {p.title}</span>
           </Link>
         </div>
       </article>

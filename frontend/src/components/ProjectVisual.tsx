@@ -19,19 +19,21 @@ export function ProjectVisual({ slug, title }: { slug: string; title: string }) 
         <span className="h-2 w-2 rounded-full bg-cyan" />
         <span className="ml-3 font-mono text-[0.6rem] tracking-wider text-muted">{title.toLowerCase().replace(/\s+/g, "-")}</span>
       </div>
-      {src ? (
-        <img
-          src={src}
-          alt={`${title} website screenshot`}
-          width={1920}
-          height={1080}
-          className="w-full object-contain"
-          loading="lazy"
-          decoding="async"
-        />
-      ) : (
-        <div className="aspect-[16/9] bg-indigo" />
-      )}
+      {/* aspect-ratio reserves space before image loads — prevents CLS */}
+      <div className="aspect-[16/9] bg-indigo">
+        {src && (
+          <img
+            src={src}
+            alt={`${title} website screenshot`}
+            width={1920}
+            height={1080}
+            sizes="(min-width: 1024px) 55vw, 100vw"
+            className="h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </div>
     </div>
   );
 }
