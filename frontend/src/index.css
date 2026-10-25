@@ -205,7 +205,8 @@ body.menu-open {
 /* ---------- Hero entrance (CSS-only, short) ---------- */
 @keyframes word-in {
   from {
-    transform: translateY(105%);
+    transform: translateY(6px);
+    opacity: 0.75;
   }
 }
 @keyframes fade-up {
@@ -226,17 +227,19 @@ body.menu-open {
     transform: scale(0.94);
   }
 }
+/* No overflow:hidden — words are visible (at natural position) before the
+   decorative entrance animation fires, so LCP paints immediately. */
 .word {
   display: inline-block;
-  overflow: hidden;
   vertical-align: top;
-  padding-bottom: 0.12em;
-  margin-bottom: -0.12em;
 }
+/* animation-fill-mode: forwards — element stays at natural state during
+   the delay so the text is readable from first paint, then gets a subtle
+   lift when its turn arrives. Total last-word: 8×35ms + 500ms = 780ms. */
 .word > span {
   display: inline-block;
-  animation: word-in 0.75s var(--ease-out) both;
-  animation-delay: calc(var(--i) * 55ms + 150ms);
+  animation: word-in 0.5s var(--ease-out) forwards;
+  animation-delay: calc(var(--i) * 35ms);
 }
 .enter {
   animation: fade-up 0.7s var(--ease-out) both;
@@ -274,12 +277,15 @@ body.menu-open {
 .streak {
   stroke-dasharray: 10 90;
   animation: streak 2.6s linear infinite;
+  animation-play-state: var(--anim-play, running);
 }
 .pulse-soft {
   animation: pulse-soft 2.8s ease-in-out infinite;
+  animation-play-state: var(--anim-play, running);
 }
 .hl {
   animation: hl 6s ease-in-out infinite;
+  animation-play-state: var(--anim-play, running);
 }
 
 /* ---------- Carousels (native horizontal scroll containers) ---------- */
@@ -601,12 +607,15 @@ html.preloading {
 }
 .founder-particle {
   animation: founder-float 7s ease-in-out infinite;
+  animation-play-state: var(--anim-play, running);
 }
 .founder-pulse {
   animation: founder-pulse 8s ease-in-out infinite;
+  animation-play-state: var(--anim-play, running);
 }
 .founder-line {
   animation: founder-line 7s linear infinite;
+  animation-play-state: var(--anim-play, running);
 }
 
 @keyframes founder-drift {
@@ -623,10 +632,21 @@ html.preloading {
 }
 .founder-drift {
   animation: founder-drift 22s ease-in-out infinite;
+  animation-play-state: var(--anim-play, running);
 }
 .founder-drift-b {
   animation: founder-drift-b 26s ease-in-out infinite;
+  animation-play-state: var(--anim-play, running);
 }
 .founder-dot {
   animation: founder-dot 3s ease-in-out infinite;
+  animation-play-state: var(--anim-play, running);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .streak, .pulse-soft, .hl,
+  .founder-particle, .founder-pulse, .founder-line,
+  .founder-drift, .founder-drift-b, .founder-dot {
+    animation: none;
+  }
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Reveal } from "../components/Reveal";
 import { SectionHead } from "../components/SectionHead";
+import { useAnimationPause } from "../hooks/useAnimationPause";
 import { AI_CAPABILITIES, AI_FLOW } from "../lib/content";
 
 const bar = "h-1.5 rounded-full bg-lav/30";
@@ -33,8 +34,9 @@ function MiniPanel({ i }: { i: number }) {
 }
 
 export function AI() {
+  const sectionRef = useAnimationPause<HTMLElement>("200px");
   return (
-    <section id="ai" className="relative overflow-hidden py-6 md:py-9">
+    <section id="ai" ref={sectionRef} className="relative overflow-hidden py-6 md:py-9">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px hairline" aria-hidden />
       <div className="container-x">
         <SectionHead label="AI & automation" title={<>AI automation for <span className="grad-text">real business workflows.</span></>}>

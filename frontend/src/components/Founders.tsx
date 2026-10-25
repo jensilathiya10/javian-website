@@ -254,6 +254,18 @@ export function Founders() {
   const show = useInView(root, { once: true, amount: 0.25 });
   const state = { initial: reduce ? false : "out", animate: reduce || show ? "in" : "out" } as const;
 
+  // Pause decorative background animations when the section is off-screen.
+  useEffect(() => {
+    const el = root.current;
+    if (!el || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(
+      ([entry]) => el.style.setProperty("--anim-play", entry.isIntersecting ? "running" : "paused"),
+      { rootMargin: "200px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section
       id="founders"
